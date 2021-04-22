@@ -1,5 +1,14 @@
 %h3 Special Slots
 
 .js-special-slots
-  = button_tag "Slot 1", class: "js-special-slot-1 btn btn-primary"
-  = button_tag "Slot 2", class: "js-special-slot-2 btn btn-primary"
+  - button_status = "btn-success" if @slot1.free?
+  - button_status = "btn-secondary disabled" if @slot1.reserved?
+  - button_status = "btn-danger disabled" if @slot1.occupied?
+  = link_to "Slot 1", slot_info_slots_path(slot_no: @slot1.slot_no), remote: true, class: "js-special-slot-1 btn #{button_status}", data: {status: @slot1.status}
+
+  - button_status = "btn-success" if @slot2.free?
+  - button_status = "btn-secondary disabled" if @slot2.reserved?
+  - button_status = "btn-danger disabled" if @slot2.occupied?
+  = link_to "Slot 2", slot_info_slots_path(slot_no: @slot2.slot_no), remote: true, class: "js-special-slot-2 btn #{button_status}", data: {status: @slot2.status}
+
+#modalContainer

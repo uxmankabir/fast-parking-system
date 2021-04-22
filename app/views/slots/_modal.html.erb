@@ -1,0 +1,33 @@
+
+<!-- Modal -->
+<div class="modal fade" id="slotInfo" tabindex="-1" aria-labelledby="slotInfoLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title" id="slotInfoLabel">Enter your info</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= form_for slot do |f| %>
+          <%= f.hidden_field :slot_no %>
+          <div class="mb-3">
+            <%= f.label :name, class: "form-label" %>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+          <div class="mb-3">
+            <%= f.label :vehicle_no, class: "form-label" %>
+            <%= f.text_field :vehicle_no, class: "form-control" %>
+          </div>
+          <div class="mb-3">
+            <%= f.label :vehicle_model, class: "form-label" %>
+            <%= f.text_field :vehicle_model, class: "form-control" %>
+          </div>
+          <%= f.hidden_field :status %>
+          <div class="mb-3">
+            <%= f.submit "Reserve", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
