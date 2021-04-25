@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="h-100">
   <head>
     <title>Fast Parking System</title>
     <%= csrf_meta_tags %>
@@ -10,10 +10,11 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= render 'shared/navbar' %>
-    <div class="container">
-      <%= yield %>
+  <body class="d-flex h-100 text-center text-white bg-dark">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <%= render 'shared/header' %>
+        <%= yield %>
+      <%= render 'shared/footer' %>
     </div>
   </body>
 </html>

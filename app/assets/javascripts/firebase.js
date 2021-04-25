@@ -9,29 +9,55 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database()
 
-// database.ref('slot1').on('value', (snapshot) => {
-//   console.log("Slot 1");
-//   console.log(snapshot.val());
-//   const slot1 = snapshot.val();
-//   if(slot1.status == "free"){
-//     $(".js-public-slot-1").removeClass("btn-primary btn-danger").addClass("btn-success")
-//   }else{
-//     $(".js-public-slot-1").removeClass("btn-primary btn-success").addClass("btn-danger")
-//   }
-// });
+database.ref('public/slot1').on('value', (snapshot) => {
+  console.log("Slot 1", snapshot.val());
+  const slot = snapshot.val();
+  if(slot.status == "free"){
+    $(".js-public-slot-1").removeClass("bg-primary bg-danger").addClass("bg-success")
+    $(".js-public-slot-1 h3").text("Free")
+  }else{
+    $(".js-public-slot-1").removeClass("bg-primary bg-success").addClass("bg-danger")
+    $(".js-public-slot-1 h3").text("Occupied")
+  }
+});
 
-// database.ref('slot2').on('value', (snapshot) => {
-//   console.log("Slot 2");
-//   console.log(snapshot.val());
-//   const slot2 = snapshot.val();
-//   if(slot2.status == "free"){
-//     $(".js-public-slot-2").removeClass("btn-primary btn-danger").addClass("btn-success")
-//   }else{
-//     $(".js-public-slot-2").removeClass("btn-primary btn-success").addClass("btn-danger")
-//   }
-// });
+database.ref('public/slot2').on('value', (snapshot) => {
+  console.log("Slot 2", snapshot.val());
+  const slot = snapshot.val();
+  if(slot.status == "free"){
+    $(".js-public-slot-2").removeClass("bg-primary bg-danger").addClass("bg-success")
+    $(".js-public-slot-2 h3").text("Free")
+  }else{
+    $(".js-public-slot-2").removeClass("bg-primary bg-success").addClass("bg-danger")
+    $(".js-public-slot-2 h3").text("Occupied")
+  }
+});
 
-database.ref('slot1').on('value', (snapshot) => {
+database.ref('public/slot3').on('value', (snapshot) => {
+  console.log("Slot 3", snapshot.val());
+  const slot = snapshot.val();
+  if(slot.status == "free"){
+    $(".js-public-slot-3").removeClass("bg-primary bg-danger").addClass("bg-success")
+    $(".js-public-slot-3 h3").text("Free")
+  }else{
+    $(".js-public-slot-3").removeClass("bg-primary bg-success").addClass("bg-danger")
+    $(".js-public-slot-3 h3").text("Occupied")
+  }
+});
+
+database.ref('public/slot4').on('value', (snapshot) => {
+  console.log("Slot 4", snapshot.val());
+  const slot = snapshot.val();
+  if(slot.status == "free"){
+    $(".js-public-slot-4").removeClass("bg-primary bg-danger").addClass("bg-success")
+    $(".js-public-slot-4 h3").text("Free")
+  }else{
+    $(".js-public-slot-4").removeClass("bg-primary bg-success").addClass("bg-danger")
+    $(".js-public-slot-4 h3").text("Occupied")
+  }
+});
+
+database.ref('private/slot1').on('value', (snapshot) => {
   console.log("Slot 1", snapshot.val());
   const slot1 = snapshot.val();
   if(slot1.status == "free"){
@@ -41,7 +67,7 @@ database.ref('slot1').on('value', (snapshot) => {
   }
 });
 
-database.ref('slot2').on('value', (snapshot) => {
+database.ref('private/slot2').on('value', (snapshot) => {
   console.log("Slot 2", snapshot.val());
   const slot2 = snapshot.val();
   if(slot2.status == "free"){
@@ -51,24 +77,24 @@ database.ref('slot2').on('value', (snapshot) => {
   }
 });
 
-function setLinkFree(linkClass){
-  $(linkClass)
-    .removeClass("btn-secondary btn-danger disabled")
-    .addClass("btn-success")
-    .data("status", "free")
-}
-function setLinkReserved(linkClass){
-  $(linkClass)
-    .removeClass("btn-success btn-danger")
-    .addClass("btn-secondary disabled")
-    .data("status", "reserved")
-}
-function setLinkOccupied(linkClass){
-  $(linkClass)
-    .removeClass("btn-success btn-secondary")
-    .addClass("btn-danger disabled")
-    .data("status", "occupied")
-}
+// function setLinkFree(linkClass){
+//   $(linkClass)
+//     .removeClass("btn-secondary btn-danger disabled")
+//     .addClass("btn-success")
+//     .data("status", "free")
+// }
+// function setLinkReserved(linkClass){
+//   $(linkClass)
+//     .removeClass("btn-success btn-danger")
+//     .addClass("btn-secondary disabled")
+//     .data("status", "reserved")
+// }
+// function setLinkOccupied(linkClass){
+//   $(linkClass)
+//     .removeClass("btn-success btn-secondary")
+//     .addClass("btn-danger disabled")
+//     .data("status", "occupied")
+// }
 
 function setSlotFree(slot_no){
   $.ajax({

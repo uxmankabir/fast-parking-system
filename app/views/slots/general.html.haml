@@ -1,6 +1,27 @@
 %h3 Public Slots
 
-.js-public-slots
-  = button_tag "Slot 1", class: "js-public-slot-1 btn btn-primary"
-  = button_tag "Slot 2", class: "js-public-slot-2 btn btn-primary"
-  = button_tag "Slot 3", class: "js-public-slot-3 btn btn-primary"
+.row.js-public-slots
+  .col-6.mt-4
+    .card.bg-primary.js-public-slot-1
+      .card-body
+        %p Slot #1
+        %hr/
+        %h3.py-4 Free
+  .col-6.mt-4
+    .card.bg-primary.js-public-slot-2
+      .card-body
+        %p Slot #2
+        %hr/
+        %h3.py-4 Free
+  .col-6.mt-4
+    .card.bg-primary.js-public-slot-3
+      .card-body
+        %p Slot #3
+        %hr/
+        %h3.py-4 Free
+  .col-6.mt-4
+    .card.bg-primary.js-public-slot-4
+      .card-body
+        %p Slot #4
+        %hr/
+        %h3.py-4 Free
