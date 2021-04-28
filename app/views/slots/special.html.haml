@@ -1,14 +1,50 @@
 %h3 Special Slots
 
-.js-special-slots
-  - button_status = "btn-success" if @slot1.free?
-  - button_status = "btn-secondary disabled" if @slot1.reserved?
-  - button_status = "btn-danger disabled" if @slot1.occupied?
-  = link_to "Slot 1", slot_info_slots_path(slot_no: @slot1.slot_no), remote: true, class: "js-special-slot-1 btn #{button_status}", data: {status: @slot1.status}
+-# .js-special-slots
+-#   - button_status = "btn-success" if @slot1.free?
+-#   - button_status = "btn-secondary disabled" if @slot1.reserved?
+-#   - button_status = "btn-danger disabled" if @slot1.occupied?
+-#   = link_to "Slot 1", slot_info_slots_path(slot_no: @slot1.slot_no), remote: true, class: "js-special-slot-1 btn #{button_status}", data: {status: @slot1.status}
 
-  - button_status = "btn-success" if @slot2.free?
-  - button_status = "btn-secondary disabled" if @slot2.reserved?
-  - button_status = "btn-danger disabled" if @slot2.occupied?
-  = link_to "Slot 2", slot_info_slots_path(slot_no: @slot2.slot_no), remote: true, class: "js-special-slot-2 btn #{button_status}", data: {status: @slot2.status}
+-#   - button_status = "btn-success" if @slot2.free?
+-#   - button_status = "btn-secondary disabled" if @slot2.reserved?
+-#   - button_status = "btn-danger disabled" if @slot2.occupied?
+-#   = link_to "Slot 2", slot_info_slots_path(slot_no: @slot2.slot_no), remote: true, class: "js-special-slot-2 btn #{button_status}", data: {status: @slot2.status}
+
+.row.js-special-slots
+  .col-6.mt-4
+    - bg_color = "bg-success" if @slot1.free?
+    - bg_color = "bg-secondary" if @slot1.reserved?
+    - bg_color = "bg-danger" if @slot1.occupied?
+    - disabled1 = "disabled" if @slot1.reserved? || @slot1.occupied?
+    - label = "Free" if @slot1.free?
+    - label = "Reserved" if @slot1.reserved?
+    - label = "Occupied" if @slot1.occupied?
+    - time = @slot1.reserved? ? @slot1.reserved_minutes : 0
+    = link_to slot_info_slots_path(slot_no: @slot1.slot_no), class: "js-special-slot-1 special-slot text-white text-decoration-none #{disabled1}", remote: true, data: {time: time} do
+      .card{class: "#{bg_color}"}
+        .card-body
+          %p Slot #1
+          %hr/
+          %h3.py-4
+            = label
+          %small
+  .col-6.mt-4
+    - bg_color = "bg-success" if @slot2.free?
+    - bg_color = "bg-secondary" if @slot2.reserved?
+    - bg_color = "bg-danger" if @slot2.occupied?
+    - disabled2 = "disabled" if @slot2.reserved? || @slot2.occupied?
+    - label = "Free" if @slot2.free?
+    - label = "Reserved" if @slot2.reserved?
+    - label = "Occupied" if @slot2.occupied?
+    - time = @slot2.reserved? ? @slot2.reserved_minutes : 0
+    = link_to slot_info_slots_path(slot_no: @slot2.slot_no), class: "js-special-slot-2 special-slot text-white text-decoration-none #{disabled2}", remote: true, data: {time: time} do
+      .card{class: "#{bg_color}"}
+        .card-body
+          %p Slot #2
+          %hr/
+          %h3.py-4
+            = label
+          %small
 
 #modalContainer

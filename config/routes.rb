@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :contact_us, only: [:index]
+
   root "home#index"
 end

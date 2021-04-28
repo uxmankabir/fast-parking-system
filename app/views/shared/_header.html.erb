@@ -2,8 +2,8 @@
   <div>
     <h3 class="float-md-start mb-0">FAST Parking System</h3>
     <nav class="nav nav-masthead justify-content-center float-md-end">
-      <a class="nav-link active" aria-current="page" href="<%= root_path %>">Home</a>
-      <a class="nav-link" href="#">Contact Us</a>
+      <a class="nav-link <%= active_link("home") %> <%= active_link("slots") %>" aria-current="page" href="<%= root_path %>">Home</a>
+      <a class="nav-link <%= active_link("contact_us") %>" href="<%= contact_us_path %>">Contact Us</a>
     </nav>
   </div>
 </header>

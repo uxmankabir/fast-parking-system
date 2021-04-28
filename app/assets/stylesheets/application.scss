@@ -1,2 +1,11 @@
 @import "bootstrap";
 @import "theme";
+
+
+.special-slot small{
+  display: inline-block;
+  line-height: 20px;
+}
+.disabled{
+  pointer-events: none;
+}

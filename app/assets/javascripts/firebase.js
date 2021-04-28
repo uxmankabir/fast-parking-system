@@ -10,7 +10,7 @@ firebase.initializeApp(firebaseConfig);
 const database = firebase.database()
 
 database.ref('public/slot1').on('value', (snapshot) => {
-  console.log("Slot 1", snapshot.val());
+  // console.log("Slot 1", snapshot.val());
   const slot = snapshot.val();
   if(slot.status == "free"){
     $(".js-public-slot-1").removeClass("bg-primary bg-danger").addClass("bg-success")
@@ -22,7 +22,7 @@ database.ref('public/slot1').on('value', (snapshot) => {
 });
 
 database.ref('public/slot2').on('value', (snapshot) => {
-  console.log("Slot 2", snapshot.val());
+  // console.log("Slot 2", snapshot.val());
   const slot = snapshot.val();
   if(slot.status == "free"){
     $(".js-public-slot-2").removeClass("bg-primary bg-danger").addClass("bg-success")
@@ -34,7 +34,7 @@ database.ref('public/slot2').on('value', (snapshot) => {
 });
 
 database.ref('public/slot3').on('value', (snapshot) => {
-  console.log("Slot 3", snapshot.val());
+  // console.log("Slot 3", snapshot.val());
   const slot = snapshot.val();
   if(slot.status == "free"){
     $(".js-public-slot-3").removeClass("bg-primary bg-danger").addClass("bg-success")
@@ -46,7 +46,7 @@ database.ref('public/slot3').on('value', (snapshot) => {
 });
 
 database.ref('public/slot4').on('value', (snapshot) => {
-  console.log("Slot 4", snapshot.val());
+  // console.log("Slot 4", snapshot.val());
   const slot = snapshot.val();
   if(slot.status == "free"){
     $(".js-public-slot-4").removeClass("bg-primary bg-danger").addClass("bg-success")
@@ -58,7 +58,7 @@ database.ref('public/slot4').on('value', (snapshot) => {
 });
 
 database.ref('private/slot1').on('value', (snapshot) => {
-  console.log("Slot 1", snapshot.val());
+  // console.log("Slot 1", snapshot.val());
   const slot1 = snapshot.val();
   if(slot1.status == "free"){
     setSlotFree("slot1")
@@ -68,7 +68,7 @@ database.ref('private/slot1').on('value', (snapshot) => {
 });
 
 database.ref('private/slot2').on('value', (snapshot) => {
-  console.log("Slot 2", snapshot.val());
+  // console.log("Slot 2", snapshot.val());
   const slot2 = snapshot.val();
   if(slot2.status == "free"){
     setSlotFree("slot2")
@@ -117,3 +117,22 @@ function setSlotOccupie(slot_no){
     }
   });
 }
+
+function timeCountDown(selector, minutes) {
+  $(selector).countdowntimer({
+    minutes: minutes,
+    size: "lg"
+  });
+}
+
+$(function () {
+  const slot1_timer = $(".js-special-slot-1").data('time')
+  const slot2_timer = $(".js-special-slot-2").data('time')
+  console.log(slot1_timer, slot2_timer)
+  if(parseInt(slot1_timer) > 0){
+    timeCountDown(".js-special-slot-1 small", slot1_timer)
+  }
+  if(parseInt(slot2_timer) > 0){
+    timeCountDown(".js-special-slot-2 small", slot2_timer)
+  }
+})
